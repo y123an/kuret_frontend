@@ -93,7 +93,7 @@ export default function Sport() {
           {trendingData.map((data, index) => {
             return (
               <div className="max-sm:w-[50%] max-sm:h-auto">
-                 <Card key={data._id} name={`specials/trending/${data.name}`} />
+                 <Card key={data._id} name={`sports/trending/${data.name}`} />
                 <button
                   onClick={() => {
                     setBookImg(`sports/trending/${data.name}`);
