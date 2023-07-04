@@ -110,6 +110,6 @@ export default function Movies() {
       </div>
     </div>
   ) : (
-    <Book img={bookImg} />
+    <Book data={bookImg} />
   );
 }

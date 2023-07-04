@@ -110,6 +110,6 @@ export default function Special() {
       </div>
     </div>
   ) : (
-    <Book img={bookImg} />
+    <Book data={bookImg} />
   );
 }
