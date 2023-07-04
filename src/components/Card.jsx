@@ -1,15 +1,12 @@
-import React, { useEffect,useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import Book from "./bookcomponent/Book";
+import React from "react";
 
 export default function Card(props) {
 
 
   return (
-    <div className="w-auto h-[300px] rounded-lg overflow-hidden shadow-lg">
+    <div className="w-auto h-auto overflow-hidden ">
       <img
-        className="w-[350px] h-[300px]"
+        className="w-[350px] h-[300px] object-contain rounded-lg"
         src={`https://kuret-app-api.onrender.com/getimage/?name=${props.name}`}
         alt="Sunset in the mountains"
       />

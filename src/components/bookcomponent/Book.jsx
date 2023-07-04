@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import Payment from "../payment/Payment";
+import Card from "../Card";
 
 export default function Book(props) {
   const [price, setPrice] = useState(100);
   const [time, setTime] = useState();
   const [tn, settn] = useState();
   const [page, setPage] = useState(true);
-  const img=props.img;
+  const img=props.data;
 
 
 
   return page ? (
-    <div className="flex items-center justify-center  bg-slate-500">
-      <div className="content flex max-md:flex-col">
-        <div className="card flex items-center">
-          <img
-            className="w-[450px] h-[500px]"
-            src={`data:image/png;base64,${props.img}`}
-            alt="Sunset in the mountains"
-          />
+    <div className="flex justify-center items-center">
+    <div className= "w-[500px] p-10 rounded-md">
+    <div className="flex items-center justify-center bg-slate-500  rounded-2xl">
+      <div className="content flex flex-col">
+        <div className="card flex justify-center items-center p-4">
+          <Card name={props.data}/>       
         </div>
         <div className="ticket-discripion bg-slate-200 h-[500px] ">
           <form
             action=""
-            className=" flex flex-wrap gap-9 mt-32 font-bold text-2xl p-12"
+            className="flex flex-col gap-6 p-6 "
           >
+            <h1>Time</h1>
+            <div className="space-x-12">
             <label className="w-1/12">8:00</label>
             <input
               type="radio"
@@ -34,6 +35,8 @@ export default function Book(props) {
                 setTime(e.target.value);
               }}
             />
+            </div>
+            <div className="space-x-12">
             <label>10:00</label>
             <input
               type="radio"
@@ -43,7 +46,8 @@ export default function Book(props) {
                 setTime(e.target.value);
               }}
             />
-
+            </div>
+            <div className="space-x-4">
             <label>Number of tickets</label>
             <input
               type="number"
@@ -51,11 +55,13 @@ export default function Book(props) {
                 setPrice((prev) => 100 * e.target.value);
                 settn(e.target.value);
               }}
+              className="rounded-md p-3"
             />
+            </div>
 
             <button
               type="submit"
-              className="bg-blue-600 px-7 py-4 rounded-md"
+              className="bg-blue-600 w-[40%] p-4 rounded-md"
               onClick={() => {
                 setPage(!page)
               }}
@@ -64,11 +70,13 @@ export default function Book(props) {
             </button>
 
             <div>
-              <p>{price} Birr </p>
+              Total <p className="text-green-600">{price} Birr </p>
             </div>
           </form>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   ) : 
   (

@@ -69,7 +69,7 @@ export default function Concert() {
                 <button
                   type="submit"
                   onClick={() => {
-                    setBookImg(data);
+                    setBookImg(`concerts/new/${data.name}`);
                     setPage(false);
                   }}
                   className="text-2xl ml-[40%] bg-yellow-400 p-1 mt-4 rounded-md text-white font-bold"
@@ -96,7 +96,7 @@ export default function Concert() {
                 <Card  name={`concerts/trending/${data.name}`} />
                 <button
                   onClick={() => {
-                    setBookImg(data);
+                    setBookImg(`concerts/trending/${data.name}`);
                     setPage(false);
                   }}
                   className="text-2xl ml-[40%] bg-yellow-400 p-1 mt-4 rounded-md text-white font-bold"
@@ -110,6 +110,6 @@ export default function Concert() {
       </div>
     </div>
   ) : (
-    <Book img={bookImg} />
+    <Book data={bookImg} />
   );
 }

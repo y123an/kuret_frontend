@@ -43,13 +43,7 @@ export default function Sport() {
 
     Axios.get("https://kuret-app-api.onrender.com/gettrendingsportsdata")
       .then((res) => {
-        res.data.forEach((element) => {
-          const base64String = btoa(
-            String.fromCharCode(...new Uint8Array(element.img.data.data))
-          );
-
-          setTrendingData((prev) => [...prev, base64String]);
-        });
+       setTrendingData(res.data)
       })
       .catch((err) => console.log(err, "it has an error"));
   }, []);
@@ -75,7 +69,7 @@ export default function Sport() {
                 <button
                   type="submit"
                   onClick={() => {
-                    setBookImg(data);
+                    setBookImg(`sports/new/${data.name}`);
                     setPage(false);
                   }}
                   className="text-2xl ml-[40%] bg-yellow-400 p-1 mt-4 rounded-md text-white font-bold"
@@ -102,7 +96,7 @@ export default function Sport() {
                  <Card key={data._id} name={`specials/trending/${data.name}`} />
                 <button
                   onClick={() => {
-                    setBookImg(data);
+                    setBookImg(`sports/trending/${data.name}`);
                     setPage(false);
                   }}
                   className="text-2xl ml-[40%] bg-yellow-400 p-1 mt-4 rounded-md text-white font-bold"

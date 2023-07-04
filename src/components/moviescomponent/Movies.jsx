@@ -43,13 +43,7 @@ export default function Movies() {
 
     Axios.get("https://kuret-app-api.onrender.com/gettrendingmoviesdata")
       .then((res) => {
-        res.data.forEach((element) => {
-          const base64String = btoa(
-            String.fromCharCode(...new Uint8Array(element.img.data.data))
-          );
-
-          setTrendingData((prev) => [...prev, base64String]);
-        });
+        setTrendingData(res.data)
       })
       .catch((err) => console.log(err, "it has an error"));
   }, []);
@@ -75,7 +69,7 @@ export default function Movies() {
                 <button
                   type="submit"
                   onClick={() => {
-                    setBookImg(data);
+                    setBookImg(`movies/new/${data.name}`);
                     setPage(false);
                   }}
                   className="text-2xl ml-[40%] bg-yellow-400 p-1 mt-4 rounded-md text-white font-bold"
@@ -102,7 +96,7 @@ export default function Movies() {
                 <Card key={data._id} name={`movies/trending/${data.name}`} />
                 <button
                   onClick={() => {
-                    setBookImg(data);
+                    setBookImg(`movies/trending/${data.name}`);
                     setPage(false);
                   }}
                   className="text-2xl ml-[40%] bg-yellow-400 p-1 mt-4 rounded-md text-white font-bold"
@@ -118,5 +112,4 @@ export default function Movies() {
   ) : (
     <Book img={bookImg} />
   );
-  return <div>movies</div>
 }
